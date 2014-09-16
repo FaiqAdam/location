@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   private
 
   def secure_params
-    params.require(:user).permit(:location_id)
+    params.require(:user).permit(:location_id, :city_id, :area_id)
   end
 
 
