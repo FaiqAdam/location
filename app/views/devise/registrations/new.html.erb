@@ -12,12 +12,15 @@
 <% @states = Location.all.select{|l| l.parent_id.blank?}%>
 
     Location
+<div id="state">
 <%= f.select :location_id, @states.collect {|p| [ p.name, p.id ] }, {include_blank: false}, :class => 'form-control' %>
-
-<%= f.select :location_id, @states.select{|l| l.parent_id.present? && l.has_children?}.collect {|p| [ p.name, p.id ] }, {include_blank: false}, :class => 'form-control' %>
-
-<%= f.select :location_id, Location.all.select{|l| l.parent_id.blank?}.collect {|p| [ p.name, p.id ] }, {include_blank: false}, :class => 'form-control' %>
-
+</div>
+<div id="city">
+<%= f.select :city_id,  Location.select{|l| l.ancestry_depth == 1}.collect {|p| [ p.name, p.id ] }, {include_blank: false}, :class => 'form-control' %>
+</div>
+<div id="area">
+<%= f.select :area_id,  Location.select{|l| l.ancestry_depth == 2}.collect {|p| [ p.name, p.id ] }, {include_blank: false}, :class => 'form-control' %>
+</div>
 
 
 

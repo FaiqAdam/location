@@ -61,6 +61,20 @@ class LocationsController < ApplicationController
     end
   end
 
+  def get_cities
+    @cities = Location.find(params[:id]).children
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def get_areas
+    @areas = Location.find(params[:id]).children
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_location
