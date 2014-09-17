@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
    belongs_to :location
+   belongs_to :city, class_name: 'Location'
+   belongs_to :area, class_name: 'Location'
 end

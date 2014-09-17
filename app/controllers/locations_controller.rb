@@ -63,16 +63,10 @@ class LocationsController < ApplicationController
 
   def get_cities
     @cities = Location.find(params[:id]).children
-    respond_to do |format|
-      format.js
-    end
   end
 
   def get_areas
     @areas = Location.find(params[:id]).children
-    respond_to do |format|
-      format.js
-    end
   end
 
   private

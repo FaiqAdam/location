@@ -1,4 +1,6 @@
 <h3>User</h3>
 <p>Name: <%= @user.email if @user.email %></p>
 
-<p>Location: <%=link_to @user.location.name, @user.location  %></p>
+<p>Location: <%= link_to @user.location.name, @user.location  %></p>
+<p>City: <%= link_to @user.city.name, @user.city %></p>
+<p>Area: <%= link_to @user.area.name, @user.area  %></p>
