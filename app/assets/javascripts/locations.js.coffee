@@ -16,7 +16,7 @@ $ ->
   $("#city").change ->
     city_id = $('#user_city_id').val()
     $.ajax
-      url: '/locations/' + city_id + '/get_cities'
+      url: '/locations/' + city_id + '/get_areas'
       dataType: 'html'
       success: (result) ->
         $("#area").html result

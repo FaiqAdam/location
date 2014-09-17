@@ -9,11 +9,9 @@
   <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
     <%= f.password_field :password, autocomplete: "off" %></div>
 
-<% @states = Location.all.select{|l| l.parent_id.blank?}%>
-
     Location
 <div id="state">
-<%= f.select :location_id, @states.collect {|p| [ p.name, p.id ] }, {include_blank: false}, :class => 'form-control' %>
+<%= f.select :location_id, Location.all.select{|l| l.ancestry_depth == 0 }.collect {|p| [ p.name, p.id ] }, {include_blank: false}, :class => 'form-control' %>
 </div>
 <div id="city">
 <%= f.select :city_id,  Location.select{|l| l.ancestry_depth == 1}.collect {|p| [ p.name, p.id ] }, {include_blank: false}, :class => 'form-control' %>
