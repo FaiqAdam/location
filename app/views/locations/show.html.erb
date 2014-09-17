@@ -1,9 +1,25 @@
 <p id="notice"><%= notice %></p>
+<nav class="breadcrumbs">
+	<% for location in @location.ancestors %>
+	  <%= link_to h(location.name), location %>
+	<% end %>
+ </nav>
+
 
 <p>
   <strong>Name:</strong>
   <%= @location.name %>
 </p>
+
+
+<br>
+
+		<h4>All user in <%= @location.name if @location.name  %></h4>
+
+		    <% @location.users.each do |user| %>
+
+		    	<p><%=link_to user.email,  user%></p>
+		 <% end %>
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>
